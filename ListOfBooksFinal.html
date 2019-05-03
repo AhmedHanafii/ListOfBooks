@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ListOfBooks</title>
+</head>
+<body>
+    <h2>list Of Books</h2>
+    <input type="text" id="txtVal">
+
+    <button onclick="addLi()">Add</button>
+    <button onclick="removeLI()">Remove</button>
+
+<ul id="list">
+    <li>The Harry Potter series</li>
+    <li>The Lord of the Rings Trilogy</li>
+    <li>The Count of Monte Cristo</li>
+    <li>A Game of Thrones</li>
+    <li>To Kill a Mockingbird </li>
+    <li>The Little Prince</li>
+    <li>Siddhartha</li>
+    <li>Candide</li>
+    <li>The Girl with the Dragon Tattoo</li>
+    <li>The Alchemist</li>
+</ul> 
+<script>
+            var items = document.querySelectorAll("#list li"),
+                tab = [], liIndex;
+        
+        
+        for(var i = 0; i < items.length; i++){
+            refreshArray()
+            tab.push(items[i].innerHTML);
+            refreshArray()
+        }
+        
+        // get li index using tab array on li click event
+        for(var i = 0; i < items.length; i++){
+            
+            items[i].onclick = function(){
+                refreshArray()
+                liIndex = tab.indexOf(this.innerHTML);
+                console.log(this.innerHTML + " INDEX = " + liIndex);
+                refreshArray()
+            };
+            
+        }
+
+        function refreshArray()
+            {
+                tab.length = 0;
+                items = document.querySelectorAll("li");
+                for(var i = 0; i < items.length; i++){
+                 tab.push(items[i].innerHTML);
+               }
+            }
+
+        function addLi()
+        {
+            refreshArray()
+            var txtVal = document.getElementById('txtVal').value,
+                listNode = document.getElementById('list'),
+                liNode = document.createElement("LI"),
+                txtNode = document.createTextNode(txtVal);
+        
+             liNode.appendChild(txtNode);
+             listNode.appendChild(liNode);
+
+             refreshArray()
+
+             
+        
+        }
+
+        function removeLI(){
+
+            refreshArray()
+               items[liIndex].parentNode.removeChild(items[liIndex]);
+               //inputText.value = "";
+               refreshArray()
+
+           }
+
+           function count(){
+                var div = document.getElementById("list");
+                 var nodelist = document.getElementsByTagName("LI");
+                 document.getElementById("demo").innerHTML = nodelist.length;
+              }
+    </script>
+            <button onclick = "count()">Count</button>
+            <p id="demo"></p>
+</body>
+</html>
