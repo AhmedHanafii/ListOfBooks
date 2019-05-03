@@ -8,10 +8,10 @@
 </head>
 <body>
     <h2>list Of Books</h2>
-    <input type="text" id="txtVal">
+    <input type="text" id="TextValue">
 
-    <button onclick="addLi()">Add</button>
-    <button onclick="removeLI()">Remove</button>
+    <button onclick="AddToList()">Add</button>
+    <button onclick="RemoveFromList()">Remove</button>
 
 <ul id="list">
     <li>The Harry Potter series</li>
@@ -57,13 +57,13 @@
                }
             }
 
-        function addLi()
+        function AddToList()
         {
             refreshArray()
-            var txtVal = document.getElementById('txtVal').value,
+            var TextValue = document.getElementById('TextValue').value,
                 listNode = document.getElementById('list'),
                 liNode = document.createElement("LI"),
-                txtNode = document.createTextNode(txtVal);
+                txtNode = document.createTextNode(TextValue);
         
              liNode.appendChild(txtNode);
              listNode.appendChild(liNode);
@@ -74,7 +74,7 @@
         
         }
 
-        function removeLI(){
+        function RemoveFromList(){
 
             refreshArray()
                items[liIndex].parentNode.removeChild(items[liIndex]);
